@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Master>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <script src="/scripts/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+    
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<header>
+    @Umbraco.RenderMacro("mainMenu")
+</header>
+
+<body>
+    @RenderBody()
+</body>
+
+<footer>
+    <div class="footer-copyright text-center py-3">© 2018 Copyright: Simon Broch Ulsted
+    </div>
+</footer>

@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectsItem>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+<div class="col-sm-6 contentBody">
+    <h4>@Umbraco.Field("projectTitle")</h4>
+    @Umbraco.Field("projectContents")
+    <p>Status: @Umbraco.Field("status")</p>
+</div>

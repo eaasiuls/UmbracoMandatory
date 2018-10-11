@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectsMain>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<div id="main-container-projects" class="col-sm-6 contentBody">
+    <div id="main-projects" class="wrapper clearfix">
+        <section>
+            <h2>@Umbraco.Field("projectsTitle")</h1>
+            @Umbraco.Field("projectsBodyText")
+            @Umbraco.RenderMacro("listProjects")
+        </section>
+    </div>
+</div>

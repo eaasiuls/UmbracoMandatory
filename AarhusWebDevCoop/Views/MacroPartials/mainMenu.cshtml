@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item @(Model.Content.Site().IsAncestorOrSelf(Model.Content) ? "current" : null)">
+            <a class="nav-link" href="@Model.Content.Site().Url">@Model.Content.Site().Name</a>
+        </li>
+          
+        @{ var selection = Model.Content.Site().Children.Where(x => x.IsVisible()).ToArray(); }
+
+        @if (selection.Length > 0)
+        {
+            foreach (var item in selection)
+            {
+                <li class="nav-item @(item.IsAncestorOrSelf(Model.Content) ? "current" : null)">
+                    <a class="nav-link" href="@item.Url">@item.Name</a>
+                </li>
+            }
+        }
+          
+          
+        <li class="dropdown nav-item last-nav-item">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project List <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              
+            @{ var projects = Model.Content.Site().FirstChild("ProjectsMain").Children().Where(x => x.IsVisible()).ToArray(); }    
+              
+            @if(projects.Length > 0)
+            {
+                foreach (var item in projects)
+                {
+                    if(@item.GetPropertyValue<string>("status") == "Completed"){
+                        <li class="nav-item @(item.IsAncestorOrSelf(Model.Content) ? "current" : null)">
+                            <a class="nav-link" href="@item.Url">@item.Name</a>
+                        </li>
+                    }
+                }
+            }
+          </ul>
+        </li>
+      </ul>
+  </div>
+</nav>
